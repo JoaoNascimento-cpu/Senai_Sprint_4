@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"> <!-- Seleciona a cadeia de caracteres para o padrão de acentução que usamos no português -->
+        <link rel="stylesheet" type="text/css" href="styles.css" /> <!-- Faz o link para o caminho do arquivo css-->
+        <title>Manipulando o Estilo do Site pela DOM</title> <!-- Nome da abinha do navegador  -->
+    </head>
+    <body>
+        <div id="manipula">
+            <p>Com base nos argumentos apresentados na aula, é possivel entender que
+            uma coisa é uma coisa e outra coisa é outra coisa, admito que não concordo nem discordo,
+            muito pelo contrario.</p> 
+            <p class="paragrafo">É factivel que a Terra é um dos planetas mais conhecidos
+            do mundo, mesmo sabendo que a vida é uma sucessão de sucessivos que sucedem sucessivamente sem cessar. 
+            Agora, mais do que nunca, é a hora, afinal, o importante é o que importa, pois onde quer que você esteja,
+            você sempre estará lá.</p>
+        </div>
+        <br>
+        <hr>
+
+        <h2 class="chamada">Altere o texto acima clicando nos botões</h2>
+
+    <div id="botoes">
+        <!--dá um refresh na página ao clicar neste botão-->>
+        <input type="button" value="Atualizar" onclick="window.location.reload()"/> 
+        <input type="button" value="tamanho da Fonte" onclick="mudaTamanhodaFonte()"/> 
+        <input type="button" value="cor da fonte" onclick="mudaCorDaFonte()"/>
+        <input type="button" value="back" onclick="back()"/>
+        <input type="button" value="italico" onclick="italico()"/>
+        <input type="button" value="negrito" onclick="negrito()"/>
+        <input type="button" value="incluir borda" onclick="incluirBorda()"/>
+        <input type="button" value="excluir borda" onclick="excluirBorda()"/>
+        <input type="button" value="esconder a Div" onclick="escondeDiv()"/>
+        <input type="button" value="reaparecer a Div" onclick="reapareceDiv()"/>
+        <input type="button" value="mudar descrição" onclick="mudarDescricao()"/>
+        <input type="button" value="mudar paragrafo" onclick="backgroundP()"/>
+        <input type="button" value="mudar botao" onclick="mudarBotao()"/>
+        <input type="button" value="mudar botoes" onclick="mudarBotoes()"/>
+        <input type="button" value="contar botoes" onclick="contar()"/>  
+        <input type="button" value="censura" onclick="censura()"/>
+        <input type="button" value="alterar fundo" onclick="fundo()"/>
+        <input type="button" value="alterar imagem" onclick="imagem()"/>
+    
+    </div>    
+
+    <img id="image" src="xuxa.jpg">
+
+        <script> //começa a brincadeira com JavaScript
+            //btn 2
+            function mudaTamanhodaFonte()
+            {
+                document.getElementById("manipula").style.fontSize = "40pt"
+            }
+
+            //btn 3
+            function mudaCorDaFonte()
+            {
+                document.getElementById("manipula").style.color = "white"
+            }
+
+            //btn 4
+            function back()
+            {
+                document.getElementById("manipula").style.backgroundColor = "pink"
+            }
+
+            //btn 5
+            function italico()
+            {
+                document.getElementById("manipula").style.fontStyle = "italic"
+            }
+
+             //btn 6
+             function negrito()
+            {
+                document.getElementById("manipula").style.fontWeight = "bold"
+            }
+
+            //btn 7
+            function incluirBorda()
+            {
+                document.getElementById("manipula").style.border = "5px solid black"
+            }
+
+            //btn 8
+            function excluirBorda()
+            {
+                document.getElementById("manipula").style.border = "0px"
+            }
+
+            //btn 9
+            function escondeDiv()
+            {
+                document.getElementById("manipula").style.display = "none"
+            }
+
+            //btn 10
+            function reapareceDiv()
+            {
+                document.getElementById("manipula").style.display = "block"
+            }
+
+            //btn 11
+            function mudarDescricao()
+            {
+               document.getElementsByClassName("chamada")[0].innerHTML = "Descricao alterada"
+            }
+            //btn 12
+            function backgroundP()
+            {
+                document.getElementById("manipula").getElementsByClassName("paragrafo")[0].style.backgroundColor = "blue"
+            }
+
+            //btn 13
+            function mudarBotao()
+            {
+                document.getElementsByTagName("input")[12].style.backgroundColor = "lightblue"
+            }
+
+            //btn 14
+            function mudarBotoes()
+            {
+                var x = document.getElementById("botoes")
+                var y = x.getElementsByTagName("input")
+                var i
+                for ( i = 0; i < y.length; i++) {
+                    y[i].style.backgroundColor = "lightblue"
+                }
+            }
+
+            //btn 15
+            function contar()
+            {
+                let x = document.getElementById("botoes").getElementsByTagName("input")
+                document.getElementById("manipula").innerHTML = x.length
+            }
+
+            //btn 16
+            function censura()
+            {
+                document.querySelector("p.paragrafo").innerHTML = "*****"
+            }
+            
+            //btn 17
+            function fundo()
+            {
+                document.querySelector("body").style.backgroundColor = "#ffa892"
+            }
+
+            //btn 18
+            function imagem()
+            {
+                var img = document.querySelector("#image")
+                img.setAttribute("src", "alien.jpg")
+            }
+            
+
+            
+        </script> <!-- termina a brincadeira com JavaScript -->
+    </body>
+</html>
