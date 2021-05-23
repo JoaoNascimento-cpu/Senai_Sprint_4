@@ -63,9 +63,36 @@
             },
             ];
 
-            //solta seus script brabos aqui
-            function name(params) {
+            function soSpitz() {
+                let Spitz = dogs.filter( (pet) =>
+                {
+                    return pet.raca === 'Spitz Alemão'
+                } )
+                Spitz.forEach(dog => {
+                    return alert(dog.nome)
+                });
+            }
+
+            function idadeReal() {
+                dogs.map(function(dogs){
+                    return alert(`${dogs.nome} tem ${dogs.idade} anos`)
+                })
+            }
+
+            function idadeSoma() {
+                var soma = dogs.reduce(function(total, item)
+                {
+                    return total + item.idade;
+                }, 0)
                 
+                alert(`O resultado da soma de todas as idades desses animais é = ${soma}`)
+            }
+
+            function mudaTudo() {
+                //header
+                document.getElementsByTagName("h1")[0].style.color = "pink"
+                document.getElementsByTagName("h1")[0].style.fontStyle = "italic" 
+                document.getElementsByTagName("h1")[0].style.fontWeight = "bold"
             }
 
         </script> 
