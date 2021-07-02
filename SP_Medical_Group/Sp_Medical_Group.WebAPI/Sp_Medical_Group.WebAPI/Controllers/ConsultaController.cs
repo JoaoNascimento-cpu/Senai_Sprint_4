@@ -68,7 +68,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
-        
+        [Authorize(Roles = "2")]
         [HttpGet("MedicoConsultas")]
         public IActionResult MedicoConsultas()
         {
@@ -84,7 +84,6 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "0")]
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
@@ -98,13 +97,13 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
-        
+        [Authorize(Roles = "1")]
         [HttpPost]
-        public IActionResult NovoCon(Consultum NovoCon)
+        public IActionResult NovoCon(Consultum novaConsulta)
         {
             try
             {
-                consulta.Cadastrar(NovoCon);
+                consulta.Cadastrar(novaConsulta);
                 return StatusCode(201);
             }
             catch (Exception ex)
@@ -122,24 +121,24 @@ namespace Sp_Medical_Group.WebAPI.Controllers
                 consulta.Deletar(id);
                 return StatusCode(204);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                return BadRequest(ex);
+                return BadRequest(exception);
             }
         }
 
         
         [HttpPut("{id}")]
-        public IActionResult AtualizarDados(int id, Consultum NovaCon)
+        public IActionResult AtualizarDados(int id, Consultum novaConsulta)
         {
             try
             {
-                consulta.Atualizar(id, NovaCon);
+                consulta.Atualizar(id, novaConsulta);
                 return StatusCode(204);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                return BadRequest(ex);
+                return BadRequest(exception);
             }
         }
 

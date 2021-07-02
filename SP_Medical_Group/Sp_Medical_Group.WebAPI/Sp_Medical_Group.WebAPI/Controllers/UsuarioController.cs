@@ -27,6 +27,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "1")]
         //http://5000/api/usuario
         public IActionResult Listar()
         {

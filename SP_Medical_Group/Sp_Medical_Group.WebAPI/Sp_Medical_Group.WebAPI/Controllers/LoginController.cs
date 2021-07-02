@@ -25,14 +25,14 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             usuario = new UsuarioRepository();
         }
 
-        [HttpPost("Login")]
+        [HttpPost]
         public IActionResult Login(Usuario login)
         {
             //Busca o usuário pelo e-mail e senha
-            Usuario Login = usuario.Login(login.Email, login.Senha);
+            Usuario permissao = usuario.Login(login.Email, login.Senha);
 
             //caso não encontre nenhum usuário  irá retornar um status code Not Found
-            if (login == null)
+            if (permissao == null)
             {
                 return NotFound("E-mail ou senha invalidos");
             }
@@ -42,9 +42,9 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             var claims = new[]
             {
                 //TipoDaClaim, ValorDaClaim
-                new Claim(JwtRegisteredClaimNames.Email, login.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, login.IdUsuario.ToString()),
-                new Claim(ClaimTypes.Role, login.IdTipoUsuario.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, permissao.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, permissao.IdUsuario.ToString()),
+                new Claim(ClaimTypes.Role, permissao.IdTipoUsuario.ToString()),
                 new Claim("Claim Personalizada", "Valor Teste")
             };
 
