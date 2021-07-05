@@ -53,6 +53,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "3")]
         [HttpGet("ConsultasUsuario")]
         public IActionResult UsuarioConsulta()
         {
@@ -84,6 +85,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public IActionResult BuscarId(int id)
         {
@@ -91,9 +93,9 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             {
                 return Ok(consulta.BuscarId(id));
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                return BadRequest(ex);
+                return BadRequest(exception);
             }
         }
 
@@ -112,7 +114,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
-        
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
@@ -127,7 +129,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
             }
         }
 
-        
+        [Authorize(Roles = "2")]
         [HttpPut("{id}")]
         public IActionResult AtualizarDados(int id, Consultum novaConsulta)
         {
