@@ -45,7 +45,7 @@ namespace Sp_Medical_Group.WebAPI.Controllers
                 new Claim(JwtRegisteredClaimNames.Email, permissao.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, permissao.IdUsuario.ToString()),
                 new Claim(ClaimTypes.Role, permissao.IdTipoUsuario.ToString()),
-                new Claim("Claim Personalizada", "Valor Teste")
+                new Claim("role", permissao.IdTipoUsuario.ToString()),
             };
 
             //chave de acesso ao Token
